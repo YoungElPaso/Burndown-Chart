@@ -1,0 +1,27 @@
+.iteration-report {
+  background: #ddd;
+  padding: 0.25em;
+  .line-chart {
+    background: #eee;
+  }
+  .line-chart > div {
+    background: #666;
+    padding: 1em;
+  }
+  h3, p {
+    color: #333;
+    padding: 0 .25em
+  }
+  p {
+    font-size: 0.8em;
+  }
+  table, td {
+    padding: 1em;
+    background: #eee;
+    border: 1px #ccc solid;
+    font-size: 0.75em;
+    .actual {
+      background: white;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+/*
+---
+name: Agile Iteration Burndown Chart Demo
+description: Sample Agile iteration (#48) burndown chart using Morris.js and jsFiddle/GitHub integration
+authors:
+  - Jesse Sutherland
+resources:
+  # jQuery 1.8.3
+  - http://cdn.oesmith.co.uk/morris-0.4.1.min.js
+  - http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js
+normalize_css: no
+lang_css: SCSS
+...
+*/
+
+<p>This demo will illustrate how Morris.js can be used to create a nicely presented burndown chart for iteration reports.</p>
