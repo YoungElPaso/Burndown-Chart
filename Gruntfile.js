@@ -80,7 +80,7 @@ module.exports = function(grunt) {
           partials: "partials/**/*.hbs"
         },
         src: ['site/*.hbs'],
-        dest: 'build/site/',
+        dest: 'build/',
         // files: {
         //   'dest': ["path/to/pages/**/*.hbs" ]
         // }
