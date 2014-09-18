@@ -9,5 +9,5 @@ Ideally the data it uses could be provided via an API, but for now it reads an H
 This branch currently has a demo that can be run as a [jsFiddle](http://jsfiddle.net/gh/get/jquery/1.8.3/YoungElPaso/Burndown-Chart/tree/master/demo), taking advantage of an interesting feature in jsFiddle that [allows you to run code from GitHub](http://doc.jsfiddle.net/use/github_read.html).
 
 ### Immediate TODO's
- * Add some sort of build process to generate parts of the demo
-  * Create a working local copy (actually comes before the first point above)
+ * Create a working local copy (instead of just demo)
+ * Add some sort of build process to generate parts of the demo - ie pull templates into demo files, css, js etc from source (Grunt copy might work)
