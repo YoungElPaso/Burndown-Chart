@@ -67,6 +67,26 @@ module.exports = function(grunt) {
         files: '<%= jshint.lib_test.src %>',
         tasks: ['jshint:lib_test', 'qunit']
       }
+    },
+    assemble: {
+      // options: {
+      //   assets: "path/to/assets",
+      //   data:   "path/to/config.json"
+      // },
+      // Config for the main 'site'
+      site: {
+        options: {
+          layout: "layouts/default.hbs",
+          partials: "partials/**/*.hbs"
+        },
+        src: ['site/*.hbs'],
+        dest: 'build/site/',
+        // files: {
+        //   'dest': ["path/to/pages/**/*.hbs" ]
+        // }
+      },
+      // Config for the demo.
+      //demo: {}
     }
   });
 
@@ -76,6 +96,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('assemble');
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
