@@ -76,11 +76,11 @@ module.exports = function(grunt) {
       // Config for the main 'site'
       site: {
         options: {
-          layout: "layouts/default.hbs",
-          partials: "partials/**/*.hbs"
+          layout: "src/layouts/default.hbs",
+          partials: "src/partials/**/*.hbs"
         },
-        src: ['site/*.hbs'],
-        dest: 'builds/',
+        src: ['src/content/*.hbs', 'src/content/*.md'],
+        dest: 'dist/',
         // files: {
         //   'dest': ["path/to/pages/**/*.hbs" ]
         // }
