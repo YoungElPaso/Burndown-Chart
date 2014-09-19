@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
     <title>{{ title }}</title>
-    <meta name="description" content="Agiel burndown chart using JS and SVG libraries">
+    <meta name="description" content="Agile burndown chart using JS and SVG libraries">
     <meta name="author" content="Jesse Sutherland">
     <meta name="generator" content="Built with Grunt and Asssemble.io">
 
@@ -21,15 +21,18 @@
   <body>
     <div id="container">
       <header>
-        <h1>{{ title }}</h1>
+        {{> header }}
       </header>
 
       <main id="main" role="main">
         <!-- the body "pulls in" content from pages -->
-        {{> body  }}
+        {{#markdown}}
+          {{> body  }}
+        {{/markdown}}
       </main>
 
       <footer>
+        {{> footer }}
       </footer>
     </div> <!--! end of #container -->
   </body>
