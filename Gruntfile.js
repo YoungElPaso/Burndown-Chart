@@ -76,6 +76,7 @@ module.exports = function(grunt) {
       // Config for the main 'site'
       site: {
         options: {
+          assets: "./src/assets/",
           layout: "default.hbs",
           layoutdir: "./src/layouts/",
           partials: "./src/partials/**/*.hbs"
