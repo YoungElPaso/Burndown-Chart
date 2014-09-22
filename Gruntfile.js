@@ -69,28 +69,26 @@ module.exports = function(grunt) {
       }
     },
     assemble: {
-      // options: {
-      //   assets: "path/to/assets",
-      //   data:   "path/to/config.json"
-      // },
-      // Config for the main 'site'
-      site: {
-        options: {
-          assets: "./src/assets/",
-          layout: "default.hbs",
-          layoutdir: "./src/layouts/",
-          partials: "./src/partials/**/*.hbs"
-        },
-        cwd: './src/content/',
-        src: ['*.hbs', '*.md'],
-        dest: './dist/',
-        expand: true,
-        // files: {
-        //   'dest': ["path/to/pages/**/*.hbs" ]
-        // }
+      // Config defaults for all builds.
+      options: {
+        assets: "./src/assets",
+        data:   "./src/data.json",
+        layout: "default.hbs",
+        layoutdir: "./src/layouts/",
+        partials: "./src/partials/**/*.hbs"
       },
-      // Config for the demo.
-      //demo: {}
+      // Config for the main pages build.
+      pages: {
+        files: [
+          {expand: true, src: ['*.hbs', '*.md'], dest: './dist/pages', cwd: './src/content'},
+        ]
+      },
+      // Config for the jsFiddle demo build.
+      demo: {
+        files: [
+          {expand: true, src: ['*.hbs', '*.md'], dest: './demo', cwd: './src/demo'},
+        ]
+      }
     }
   });
 
@@ -104,5 +102,6 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
-
+  grunt.registerTask('a-dev', ['assemble']);
+  grunt.registerTask('a-prod', ['assemble'], //other tasks like uglify etc);
 };
