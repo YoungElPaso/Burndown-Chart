@@ -59,6 +59,12 @@ module.exports = function(grunt) {
       files: ['test/**/*.html']
     },
     watch: {
+      // Adding assemble watch task.
+      all: {
+        files: ['./src/**/*'],
+        // Need to sort out if newer is misconfigured or necessary, cause right now , does nothing.
+        tasks: ['newer:assemble']
+      },
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
         tasks: ['jshint:gruntfile']
@@ -80,13 +86,13 @@ module.exports = function(grunt) {
       // Config for the main pages build.
       pages: {
         files: [
-          {expand: true, src: ['*.hbs', '*.md'], dest: './dist/pages', cwd: './src/content'},
+          {expand: true, src: ['*.hbs', '*.md'], dest: './dist/gh-pages', cwd: './src/content'},
         ]
       },
       // Config for the jsFiddle demo build.
       demo: {
         files: [
-          {expand: true, src: ['*.hbs', '*.md'], dest: './demo', cwd: './src/demo'},
+          {expand: true, src: ['*.hbs', '*.md'], dest: './dist/demo', cwd: './src/demo'},
         ]
       }
     }
@@ -99,9 +105,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('assemble');
+  grunt.loadNpmTasks('grunt-newer');
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
-  grunt.registerTask('a-dev', ['assemble']);
-  grunt.registerTask('a-prod', ['assemble'], //other tasks like uglify etc);
+  grunt.registerTask('a-dev', ['newer:assemble', 'watch:all']);
+  grunt.registerTask('a-prod', ['assemble', /*other tasks like uglify etc*/]);
 };
