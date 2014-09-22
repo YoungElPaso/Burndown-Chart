@@ -1,5 +1,5 @@
 ---
-title: The Fire Rises! A burndown chart
+title: The Fire Rises! (Or rather, it should fall). An Agile burndown chart.
 ---
 ## Agile Iteration Burndown Chart
 
