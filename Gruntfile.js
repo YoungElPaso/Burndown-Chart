@@ -74,6 +74,19 @@ module.exports = function(grunt) {
         tasks: ['jshint:lib_test', 'qunit']
       }
     },
+    clean: {
+      dev: {
+        options: {
+          'no-write': false
+        },
+        src: ['./dist/dev']
+      }
+    },
+    copy: {
+      stable: {
+        files: [{expand: true, cwd: './dist/dev/', src: '**', dest: './dist/stable/'}]
+      }
+    },
     assemble: {
       // Config defaults for all builds.
       options: {
@@ -86,13 +99,13 @@ module.exports = function(grunt) {
       // Config for the main pages build.
       pages: {
         files: [
-          {expand: true, src: ['*.hbs', '*.md'], dest: './dist/gh-pages', cwd: './src/content'},
+          {expand: true, src: ['*.hbs', '*.md'], dest: './dist/dev/gh-pages', cwd: './src/content'},
         ]
       },
       // Config for the jsFiddle demo build.
       demo: {
         files: [
-          {expand: true, src: ['*.hbs', '*.md'], dest: './dist/demo', cwd: './src/demo'},
+          {expand: true, src: ['*.hbs', '*.md'], dest: './dist/dev/demo', cwd: './src/demo'},
         ]
       }
     }
@@ -106,9 +119,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-newer');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
-  grunt.registerTask('a-dev', ['newer:assemble', 'watch:all']);
-  grunt.registerTask('a-prod', ['assemble', /*other tasks like uglify etc*/]);
+  grunt.registerTask('assemble-dev', ['clean:dev', 'newer:assemble', 'watch:all']);
+  grunt.registerTask('assemble-prod', ['assemble', 'copy:stable' /*other tasks like uglify etc*/]);
 };

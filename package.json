@@ -10,6 +10,8 @@
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-uglify": "~0.2.7",
     "assemble": "~0.4.42",
-    "grunt-newer": "~0.7.0"
+    "grunt-newer": "~0.7.0",
+    "grunt-contrib-copy": "~0.6.0",
+    "grunt-contrib-clean": "~0.6.0"
   }
 }
