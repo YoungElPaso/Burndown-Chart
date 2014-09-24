@@ -13,12 +13,23 @@ module.exports = function(grunt) {
     // Task configuration.
     concat: {
       options: {
-        banner: '<%= banner %>',
+        // banner: '<%= banner %>',
         stripBanners: true
       },
       dist: {
         src: ['lib/<%= pkg.name %>.js'],
         dest: 'dist/<%= pkg.name %>.js'
+      },
+      // Concating yml and js sources for demo dist.
+      demo: {
+        // files: [
+        //   {expand: true, cwd: './src/demo/', src: ['**.yml'], dest: './dist/dev/demo/demo.yml', flatten: true},
+        //   {expand: true, cwd: './src/assets/js/', src: ['burndown.js'], dest: './dist/dev/demo/demo.js'}
+        // ]
+        files: {
+          './dist/dev/demo/demo.details': ['./src/demo/*.yml'],
+          './dist/dev/demo/demo.js': ['./src/assets/js/burndown.js']
+        }
       }
     },
     uglify: {
@@ -110,6 +121,10 @@ module.exports = function(grunt) {
       },
       // Config for the jsFiddle demo build.
       demo: {
+        options: {
+          layout: 'demo.hbs',
+          data: "./src/demo/data.yml"
+        },
         files: [
           {expand: true, src: ['*.hbs', '*.md'], dest: './dist/dev/demo', cwd: './src/demo'},
         ]
@@ -130,6 +145,6 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
-  grunt.registerTask('assemble-dev', ['clean:dev', 'newer:assemble', 'watch:all']);
+  grunt.registerTask('assemble-dev', ['clean:dev', 'newer:assemble', 'concat:demo', /*'watch:all'*/]);
   grunt.registerTask('assemble-prod', ['clean', 'assemble', 'copy:stable' /*other tasks like uglify etc*/]);
 };
