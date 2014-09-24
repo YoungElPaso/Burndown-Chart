@@ -80,6 +80,12 @@ module.exports = function(grunt) {
           'no-write': false
         },
         src: ['./dist/dev']
+      },
+      stable: {
+        options: {
+          'no-write': false
+        },
+        src: ['./dist/stable']
       }
     },
     copy: {
@@ -125,5 +131,5 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
   grunt.registerTask('assemble-dev', ['clean:dev', 'newer:assemble', 'watch:all']);
-  grunt.registerTask('assemble-prod', ['assemble', 'copy:stable' /*other tasks like uglify etc*/]);
+  grunt.registerTask('assemble-prod', ['clean:dev', 'assemble', 'copy:stable' /*other tasks like uglify etc*/]);
 };
